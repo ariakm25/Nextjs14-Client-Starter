@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/nextjs';
 import {
   ErrorResponse,
   ErrorResponseException,
@@ -57,6 +58,7 @@ const fetcher = async <Res, Req = never>({
     responseJSON = await response.json();
   } catch (error) {
     console.error('Fetch error', error);
+    Sentry.captureException(error);
     throw new Error('Network Error');
   }
 
