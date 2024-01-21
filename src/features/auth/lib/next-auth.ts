@@ -34,6 +34,8 @@ export const nextAuthOptions: NextAuthOptions = {
               password: credentials.password,
             });
 
+            console.log(response)
+
             const getMe = await me(response.data.accessToken);
 
             return {

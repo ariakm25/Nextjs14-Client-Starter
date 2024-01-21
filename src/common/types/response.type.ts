@@ -6,7 +6,10 @@ export interface BaseResponse<T> {
   statusCode?: number;
 }
 
-export interface PaginationResponse {
+export interface PaginationResponse<T> {
+  data: T[];
+  message?: string;
+  statusCode?: number;
   page: string;
   take: string;
   totalItems: number;
