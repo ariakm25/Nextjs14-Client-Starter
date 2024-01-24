@@ -1,40 +1,40 @@
-import { FetcherRequest } from '@/common/utils/fetcher';
+import { IFetcherRequest } from '@/common/utils/fetcher';
 
-export interface BaseResponse<T> {
+export interface IBaseResponse<T> {
   data: T;
   message?: string;
   statusCode?: number;
 }
 
-export interface PaginationResponse<T> {
-  data: T[];
-  message?: string;
-  statusCode?: number;
-  page: string;
-  take: string;
-  totalItems: number;
-  totalPages: number;
-  hasPreviousPage: boolean;
-  hasNextPage: boolean;
+export interface IPaginationResponse<T> {
+  items: T[];
+  meta: {
+    page: number;
+    take: number;
+    totalItems: number;
+    totalPages: number;
+    hasPreviousPage: boolean;
+    hasNextPage: boolean;
+  };
 }
 
-export interface ErrorResponse {
+export interface IErrorResponse {
   statusCode: number;
   message: Array<string>;
   error?: never;
 }
 
-export class ErrorResponseException implements ErrorResponse {
+export class ErrorResponseException implements IErrorResponse {
   error?: never;
   message: Array<string>;
   statusCode: number;
-  originalRequest?: FetcherRequest<never>;
+  originalRequest?: IFetcherRequest<never>;
 
   constructor(
     statusCode: number,
     message: Array<string>,
     error?: never,
-    originalRequest?: FetcherRequest<never>
+    originalRequest?: IFetcherRequest<never>
   ) {
     this.error = error;
     this.message = message;
