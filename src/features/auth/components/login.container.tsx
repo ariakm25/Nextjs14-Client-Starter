@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from '@/common/components/ui/card';
 import { LoginForm } from '@/features/auth/components/login.form';
+import { Suspense } from 'react';
 
 export function LoginContainer() {
   return (
@@ -20,7 +21,9 @@ export function LoginContainer() {
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
-          <LoginForm />
+          <Suspense>
+            <LoginForm />
+          </Suspense>
         </CardContent>
       </Card>
     </div>

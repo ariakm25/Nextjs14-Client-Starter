@@ -28,7 +28,7 @@ export const me = async (token?: string) => {
     bearerToken = getAuth?.accessToken || null;
   }
 
-  return await fetcher<IUser>({
+  return await fetcher<IBaseResponse<IUser>>({
     path: '/auth/me',
     method: 'GET',
     isExternal: true,
