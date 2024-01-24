@@ -19,7 +19,7 @@ export default function AdminUserPage() {
   return (
     <div>
       <h1>Users</h1>
-      <p>There are {data?.data?.length} users in the database</p>
+      <p>There are {data?.data?.items.length} users in the database</p>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
