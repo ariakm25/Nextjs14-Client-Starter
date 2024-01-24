@@ -29,18 +29,16 @@ export const nextAuthOptions: NextAuthOptions = {
       async authorize(credentials): Promise<User | null> {
         if (credentials) {
           try {
-            const response = await loginWithEmailAndPassword({
+            const { data: loginData } = await loginWithEmailAndPassword({
               email: credentials.email,
               password: credentials.password,
             });
 
-            console.log(response)
-
-            const getMe = await me(response.data.accessToken);
+            const { data: userData } = await me(loginData.accessToken);
 
             return {
-              ...response.data,
-              ...getMe,
+              ...loginData,
+              ...userData,
             };
           } catch (error) {
             console.error(error);

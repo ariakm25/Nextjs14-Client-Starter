@@ -3,11 +3,12 @@
 import { PropsWithChildren } from 'react';
 import { SWRConfig } from 'swr';
 
-export default function LayouPanelAdmin({ children }: PropsWithChildren) {
+export const SwrProvider = ({ children }: PropsWithChildren) => {
   return (
     <SWRConfig
       value={{
         onError: (err) => {
+          // TODO: Add error handling for SWR
           console.log(err);
         },
       }}
@@ -15,4 +16,4 @@ export default function LayouPanelAdmin({ children }: PropsWithChildren) {
       {children}
     </SWRConfig>
   );
-}
+};

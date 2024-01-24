@@ -50,6 +50,7 @@ const fetcher = async <Res, Req = never>({
       body: dataBody,
       credentials: 'same-origin',
       headers: {
+        'Content-Type': 'application/json',
         ...headers,
       },
       ...options,
