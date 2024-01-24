@@ -1,10 +1,10 @@
 import * as Sentry from '@sentry/nextjs';
 import {
-  ErrorResponse,
   ErrorResponseException,
+  IErrorResponse,
 } from '@/common/types/response.type';
 
-export interface FetcherRequest<Req> {
+export interface IFetcherRequest<Req> {
   path: string;
   data?: Req;
   query?: { [key: string]: string | number };
@@ -22,9 +22,9 @@ const fetcher = async <Res, Req = never>({
   headers = {},
   options,
   isExternal = false,
-}: FetcherRequest<Req>): Promise<Res> => {
+}: IFetcherRequest<Req>): Promise<Res> => {
   let response: Response;
-  let responseJSON: Res | ErrorResponse;
+  let responseJSON: Res | IErrorResponse;
 
   try {
     const apiURL = isExternal
@@ -63,7 +63,7 @@ const fetcher = async <Res, Req = never>({
   }
 
   if (!response.ok) {
-    responseJSON = responseJSON as ErrorResponse;
+    responseJSON = responseJSON as IErrorResponse;
     throw new ErrorResponseException(
       responseJSON.statusCode,
       Array.isArray(responseJSON.message)

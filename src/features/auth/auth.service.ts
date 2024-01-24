@@ -5,10 +5,10 @@ import fetcher from '@/common/utils/fetcher';
 import { IAuthResponse } from '@/features/auth/types/auth.response';
 import { auth } from '@/features/auth/lib/next-auth';
 import { IUser } from '@/features/auth/types/auth.model';
-import { BaseResponse } from '@/common/types/response.type';
+import { IBaseResponse } from '@/common/types/response.type';
 
 export const loginWithEmailAndPassword = async (payload: ILoginSchema) => {
-  return await fetcher<BaseResponse<IAuthResponse>, ILoginSchema>({
+  return await fetcher<IBaseResponse<IAuthResponse>, ILoginSchema>({
     path: '/auth/login',
     method: 'POST',
     data: payload,
