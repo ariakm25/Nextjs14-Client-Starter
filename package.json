@@ -9,7 +9,9 @@
     "dev-turbo": "next dev --turbo -p 4000",
     "build": "next build",
     "start": "next start -p 4000",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migration:generate": "drizzle-kit generate:pg",
+    "migrate": "bun run src/database/migrate.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -45,9 +47,11 @@
     "clsx": "^2.1.0",
     "cmdk": "^0.2.0",
     "date-fns": "^3.3.1",
+    "drizzle-orm": "^0.29.3",
     "lucide-react": "^0.314.0",
     "next": "14.1.0",
     "next-auth": "^4.24.5",
+    "postgres": "^3.4.3",
     "react": "^18.2.0",
     "react-day-picker": "^8.10.0",
     "react-dom": "^18.2.0",
@@ -63,6 +67,7 @@
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "autoprefixer": "^10.4.17",
+    "drizzle-kit": "^0.20.13",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.1.0",
     "postcss": "^8.4.33",
